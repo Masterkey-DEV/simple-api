@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>movies API</title>
+    <style>
+        article{
+            border: 1px solid #fff;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        img{
+            height: auto;
+            width: 320px;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>hola</h1>
+    <main></main>
+    <script type="module" >
+        fetch('http://localhost:1234/movies').
+        then(res => res.json()).
+        then(movies => {
+             const html = movies.map(movie => {
+                return `
+                     <article data_id=${movie.id}>
+                        <h2>${movie.title}</h2>
+                        <img src=${movie.poster} alt=${movie.title}>
+                        <p><span>${movie.year}</span> <span>${movie.director}</span></p>
+                    </article>`
+            }).join('')
+            document.querySelector('main').innerHTML = html
+        } )
+    </script>
+
+</body>
+</html>
