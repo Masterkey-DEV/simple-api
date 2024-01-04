@@ -1,29 +1,29 @@
-const z = require('zod')
+import Z  from 'zod'
 
-const schema = z.object({
-  title: z.string({
+const schema = Z.object({
+  title: Z.string({
     invalid_type_error: 'movie must be a string',
     required_error: 'movie title is required.'
   }),
-  year: z.number().int().positive().min(1900).max(2024),
-  duration: z.number().positive(),
-  director: z.string(),
-  poster: z.string().url({
+  year: Z.number().int().positive().min(1900).max(2024),
+  duration: Z.number().positive(),
+  director: Z.string(),
+  poster: Z.string().url({
     message: 'poster must be a valid url'
   }),
-  genre: z.array(z.enum(['action', 'adventure', 'horror', 'drama', 'fantasy', 'thriller', 'comedy'], {
+  genre: Z.array(Z.enum(['action', 'adventure', 'horror', 'drama', 'fantasy', 'thriller', 'comedy'], {
     required_error: 'genre is required',
     invalid_type_error: 'genre must be an array of strings'
   })),
-  rate: z.number().min(0).max(10).default(5)
+  rate: Z.number().min(0).max(10).default(5)
 })
 
-function validator (object) {
+export function validator (object) {
   return schema.safeParse(object)
 }
 
-function partialValidator (object) {
+export function partialValidator (object) {
   return schema.partial().safeParse(object)
 }
 
-module.exports = { validator, partialValidator }
+

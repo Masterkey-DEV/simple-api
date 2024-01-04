@@ -1,8 +1,9 @@
 {
+  "type": "module",
   "name": "nueva_clase_db",
   "version": "1.0.0",
   "description": "GET http://localhost:1234/movies",
-  "main": "kors.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +15,11 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "standard": "^17.1.0"
+  },
+  "eslintConfig": {
+    "extends":"standard"
   }
 }
