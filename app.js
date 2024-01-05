@@ -87,5 +87,5 @@ server.use('/movies', moviesRouter)
 const PORT = process.env.PORT ?? 1234
 
 server.listen(PORT, () => {
-  console.log(`escuchando en el puerto  https://localhost:${PORT}`)
+  console.log(`escuchando en el puerto ${PORT}`)
 })
